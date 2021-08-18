@@ -11,9 +11,15 @@ function inputValidation() {
 }
 //validation function
 function ammountValidation() {
-  const inputWithdrawBalance = document.getElementById("input-money").value;
-  const totalBalence = document.getElementById("balance-total").innerText;
-  if (inputWithdrawBalance > totalBalence) {
+  const inputWithdrawBalance = parseFloat(
+    document.getElementById("input-money").value
+  );
+  const totalBalence = parseFloat(
+    document.getElementById("balance-total").innerText
+  );
+  if (totalBalence > 200000 && inputWithdrawBalance > 200000) {
+    return `sorry! you have exceed your withdraw limit. enter the ammount equal or less than 2 lakh once a time`;
+  } else if (inputWithdrawBalance > totalBalence) {
     return (
       "sorry! you have not sufficient balance for withdraw " +
       inputWithdrawBalance +
